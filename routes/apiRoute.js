@@ -12,5 +12,12 @@ module.exports = (app) => {
     })
   );
 
-  
+  app.post("/api/notes", (req, res) => {
+    const { title, text } = req.body;
+    const newNote = { title, text, id: Math.floor(Math.random() * 99) };
+    data.push(newNote);
+    saveNote(data);
+
+    res.JSON(data);
+  });
 };
